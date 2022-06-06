@@ -13,3 +13,9 @@ class MovieAppGetGenersLoadingState extends MovieAppStates {}
 class MovieAppGetGenersSuccessState extends MovieAppStates {}
 
 class MovieAppGetGenersFailedState extends MovieAppStates {}
+
+class MovieAppGetSearchFailedState extends MovieAppStates {}
+
+class MovieAppGetSearchSuccessState extends MovieAppStates {}
+
+class MovieAppGetSearchLoadingState extends MovieAppStates {}

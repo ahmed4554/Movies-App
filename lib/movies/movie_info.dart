@@ -2,8 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:final_task_movies/cubit/cubit.dart';
 import 'package:final_task_movies/cubit/states.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 
@@ -25,16 +23,16 @@ class MovieInfoScreen extends StatelessWidget {
                     children: [
                       Container(
                         clipBehavior: Clip.antiAliasWithSaveLayer,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           boxShadow: [
                             BoxShadow(
                               color: Color(0xff6BB2A0),
                               blurRadius: 9,
                               spreadRadius: 8,
-                              offset: const Offset(0, 0),
+                              offset: Offset(0, 0),
                             ),
                           ],
-                          borderRadius: const BorderRadius.only(
+                          borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(40.0),
                               bottomRight: Radius.circular(40.0)),
                         ),
@@ -95,7 +93,7 @@ class MovieInfoScreen extends StatelessWidget {
                                   color: Colors.black.withOpacity(.5),
                                   borderRadius: BorderRadius.circular(20),
                                 ),
-                                child: Icon(
+                                child: const Icon(
                                   Icons.favorite_border,
                                   color: Colors.red,
                                 ),
@@ -129,15 +127,15 @@ class MovieInfoScreen extends StatelessWidget {
                             Container(
                               padding: const EdgeInsets.all(20.0),
                               decoration: BoxDecoration(
-                                boxShadow: [
+                                boxShadow: const [
                                   BoxShadow(
                                     color: Color(0xff6BB2A0),
                                     blurRadius: 9,
                                     spreadRadius: 4,
-                                    offset: const Offset(0, 0),
+                                    offset: Offset(0, 0),
                                   ),
                                 ],
-                                color: Color(0xffE0ECDE),
+                                color: const Color(0xffE0ECDE),
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Text(

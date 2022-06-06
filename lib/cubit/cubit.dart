@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:final_task_movies/dio/dio.dart';
 import 'package:final_task_movies/end_points/end_points.dart';
+import 'package:final_task_movies/models/search_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -51,7 +52,6 @@ class MovieAppCubit extends Cubit<MovieAppStates> {
       'with_genres': '$genre'
     }).then((value) {
       movieModel = Movie.fromJson(value.data);
-      print(movieModel!.results![0].popularity.toString());
       emit(MovieAppGetSuccessState());
     }).catchError((e) {
       print(e.toString());
@@ -60,7 +60,7 @@ class MovieAppCubit extends Cubit<MovieAppStates> {
   }
 
   MovieInnerInfo? innerInfo;
-  void getMovieInfo(context,int id) {
+  void getMovieInfo(context, int id) {
     emit(MovieAppLoadingState());
     DioHelper.getData(
         url: 'movie/$id',
@@ -76,6 +76,21 @@ class MovieAppCubit extends Cubit<MovieAppStates> {
     }).catchError((e) {
       print(e.toString());
       emit(MovieAppGetFailedState());
+    });
+  }
+
+  SearchModel? searchModel;
+  void getSearch(String text) {
+    emit(MovieAppGetSearchLoadingState());
+    DioHelper.getData(url: SEARCH, query: {
+      'api_key': '2001486a0f63e9e4ef9c4da157ef37cd',
+      'query': text
+    }).then((value) {
+      searchModel = SearchModel.fromJson(value.data);
+      emit(MovieAppGetSearchSuccessState());
+    }).catchError((e) {
+      print(e.toString());
+      emit(MovieAppGetSearchFailedState());
     });
   }
 }

@@ -1,11 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:final_task_movies/cubit/cubit.dart';
-import 'package:final_task_movies/models/movie_list_model.dart';
 import 'package:flutter/material.dart';
 
 import '../models/geners_model.dart';
 
-Widget buildMovieItme(context, Results model) {
+Widget buildMovieItme(context, model) {
   return InkWell(
     onTap: () {
       MovieAppCubit.get(context).getMovieInfo(context, int.parse(model.id.toString()));
@@ -108,6 +107,24 @@ Widget buildCategoryItem(context, Genres model) {
         style: const TextStyle(
             fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
       ),
+    ),
+  );
+}
+Widget noResult(context) {
+  return Center(
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Icon(
+          Icons.menu,
+          size: 120.0,
+        ),
+        const SizedBox(height: 20,),
+        Text(
+          'Search to view Movie',
+          style: Theme.of(context).textTheme.headline3,
+        )
+      ],
     ),
   );
 }
