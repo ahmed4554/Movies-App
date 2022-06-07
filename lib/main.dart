@@ -26,7 +26,7 @@ class MovieApp extends StatelessWidget {
       child: BlocConsumer<MovieAppCubit, MovieAppStates>(
           listener: (context, state) {},
           builder: (context, state) {
-            return MaterialApp(
+            return const MaterialApp(
               debugShowCheckedModeBanner: false,
               home: MovieScreen(),
             );

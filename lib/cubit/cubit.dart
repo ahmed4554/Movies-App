@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:bloc/bloc.dart';
 import 'package:final_task_movies/dio/dio.dart';
 import 'package:final_task_movies/end_points/end_points.dart';
@@ -10,6 +12,7 @@ import '../models/geners_model.dart';
 import '../models/movie_info_model.dart';
 import '../models/movie_list_model.dart';
 import '../movies/movie_info.dart';
+import '../movies/movie_info_edit.dart';
 import 'states.dart';
 
 class MovieAppCubit extends Cubit<MovieAppStates> {
@@ -69,7 +72,7 @@ class MovieAppCubit extends Cubit<MovieAppStates> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: ((context) => MovieInfoScreen(innerInfo)),
+          builder: ((context) => MovieInfoEdit(innerInfo)),
         ),
       );
       emit(MovieAppGetSuccessState());

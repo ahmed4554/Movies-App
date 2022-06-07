@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:final_task_movies/cubit/cubit.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +9,8 @@ import '../models/geners_model.dart';
 Widget buildMovieItme(context, model) {
   return InkWell(
     onTap: () {
-      MovieAppCubit.get(context).getMovieInfo(context, int.parse(model.id.toString()));
+      MovieAppCubit.get(context)
+          .getMovieInfo(context, int.parse(model.id.toString()));
     },
     child: Container(
       clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -110,6 +113,7 @@ Widget buildCategoryItem(context, Genres model) {
     ),
   );
 }
+
 Widget noResult(context) {
   return Center(
     child: Column(
@@ -119,12 +123,25 @@ Widget noResult(context) {
           Icons.menu,
           size: 120.0,
         ),
-        const SizedBox(height: 20,),
+        const SizedBox(
+          height: 20,
+        ),
         Text(
           'Search to view Movie',
           style: Theme.of(context).textTheme.headline3,
         )
       ],
+    ),
+  );
+}
+
+Widget buildBlur(
+    {required Widget child, double sigmaX = 10, double sigmaY = 10}) {
+  return ClipRRect(
+    borderRadius: BorderRadius.circular(20),
+    child: BackdropFilter(
+      filter: ImageFilter.blur(sigmaX: sigmaX, sigmaY: sigmaY),
+      child: child,
     ),
   );
 }
